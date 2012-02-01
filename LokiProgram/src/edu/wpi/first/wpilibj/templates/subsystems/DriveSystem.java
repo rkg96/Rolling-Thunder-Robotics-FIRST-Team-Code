@@ -3,7 +3,8 @@ package edu.wpi.first.wpilibj.templates.subsystems;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.templates.Wheel;
 /*
- * The DriveSystem class represents the robots motor drive system.
+ * The DriveSystem class represents the robot's physical drive system.
+ * Each wheel is comprised of two motors
  */
 
 public class DriveSystem extends Subsystem {
