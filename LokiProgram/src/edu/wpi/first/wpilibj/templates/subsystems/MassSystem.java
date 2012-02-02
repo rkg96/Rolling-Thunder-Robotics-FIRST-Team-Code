@@ -16,6 +16,10 @@ public class MassSystem extends Subsystem {
         massJaguar = new Jaguar(1);
     }
 
+    public void set(double speed) {
+        massMotor.set(speed);
+    }
+
     public void initDefaultCommand() {
         // Set the default command for a subsystem here. Send Mass position?
         //setDefaultCommand(new MySpecialCommand());
