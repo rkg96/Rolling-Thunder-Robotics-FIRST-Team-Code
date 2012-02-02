@@ -17,7 +17,7 @@ public class MassSystem extends Subsystem {
     }
 
     public void set(double speed) {
-        massMotor.set(speed);
+        massJaguar.set(speed);
     }
 
     public void initDefaultCommand() {
