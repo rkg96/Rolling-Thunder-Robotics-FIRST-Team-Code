@@ -9,12 +9,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableGyro;
  */
 public class GyroSystem extends Subsystem {
 
-    public SendableGyro xSendableGyro;
-    public SendableGyro ySendableGyro;
+    public SendableGyro SendableGyro;
+    //public SendableGyro ySendableGyro;
 
     public GyroSystem() {
-        xSendableGyro = new SendableGyro(1);
-        ySendableGyro = new SendableGyro(1);
+        SendableGyro = new SendableGyro(1);
+       // ySendableGyro = new SendableGyro(1);
     }
     private NetworkTable table;
 
