@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableGyro;
  *
  */
 public class GyroSystem extends Subsystem {
-
+double gyroAngle=0.0;
     public SendableGyro SendableGyro;
     //public SendableGyro ySendableGyro;
 

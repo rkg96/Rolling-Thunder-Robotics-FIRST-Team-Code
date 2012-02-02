@@ -22,7 +22,6 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
 public class driveCommand extends CommandBase {
     //joystick and it's values...
 
-    
     //rotation motor controller.
     //Victor frTurn = new Victor(1);
     //Victor flTurn = new Victor(2);
@@ -75,10 +74,10 @@ public class driveCommand extends CommandBase {
 
     protected void swerveWithRotation(double STR, double FWD, double RCW) {
         //convert to field-centric...
-        double temp = FWD * Math.cos(GyroSubsystem.SendableGyro.getAngle()) + STR * Math.sin(GyroSubsystem.SendableGyro.getAngle());
-        STR = -FWD * Math.sin(GyroSubsystem.SendableGyro.getAngle()) + STR * Math.cos(GyroSubsystem.SendableGyro.getAngle());
+        double temp = FWD * Math.cos(GyroSubsystem.getAngle()) + STR * Math.sin(GyroSubsystem.getAngle());
+        STR = -FWD * Math.sin(GyroSubsystem.getAngle()) + STR * Math.cos(GyroSubsystem.getAngle());
         FWD = temp;
-
+        GyroSubsystem.updateAngle(RCW);
         //Vector components...
         double A = STR - RCW * (L / R);
         double B = STR + RCW * (L / R);
