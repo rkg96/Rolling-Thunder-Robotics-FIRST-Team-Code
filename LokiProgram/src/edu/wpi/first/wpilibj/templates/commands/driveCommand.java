@@ -19,7 +19,7 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
  *
  * @author Giang
  */
-public class driveCommand extends CommandBase {
+public class DriveCommand extends CommandBase {
     //joystick and it's values...
 
     //rotation motor controller.
@@ -44,7 +44,7 @@ public class driveCommand extends CommandBase {
     double W = 14.0;
     double R = Math.sqrt(MathUtils.pow(L, 2.0) + MathUtils.pow(W, 2.0));
 
-    public driveCommand() {
+    public DriveCommand() {
         // Use requires() here to declare subsystem dependencies
         requires(DriveSubsystem);
     }
