@@ -4,7 +4,7 @@
  */
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.templates.OI;
 
 /**
  *
@@ -24,11 +24,12 @@ public class MoveLever extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if(oi.upMass.get())
+        if (OI.upMass.get()) {
             massSubsystem.massVictor.set(.1);
-        else if (oi.downMass.get())
+        } else if (OI.downMass.get()) {
             massSubsystem.massVictor.set(-.1);
-            
+        }
+
     }
 
     //Make this return true when this Command no longer needs to run execute()
