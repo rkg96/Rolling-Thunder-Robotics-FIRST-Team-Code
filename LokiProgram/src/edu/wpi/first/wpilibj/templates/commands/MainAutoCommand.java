@@ -7,7 +7,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 public class MainAutoCommand extends CommandBase {
 
     public MainAutoCommand() {
-        requires(GyroSubsystem);
+        requires(gyroSubsystem);
     }
 
     // Called just before this Command runs the first time

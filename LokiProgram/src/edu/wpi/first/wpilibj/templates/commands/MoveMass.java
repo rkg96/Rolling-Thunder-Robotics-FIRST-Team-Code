@@ -4,7 +4,7 @@
  */
 package edu.wpi.first.wpilibj.templates.commands;
 
-import edu.wpi.first.wpilibj.templates.RobotMap;
+import edu.wpi.first.wpilibj.templates.OI;
 
 /**
  *
@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.templates.RobotMap;
 public class MoveMass extends CommandBase {
 
     public MoveMass() {
-        requires(MassSubsystem);
+        requires(massSubsystem);
     }
 
     // Called just before this Command runs the first time
@@ -22,31 +22,32 @@ public class MoveMass extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if (RobotMap.stick1.getY() > 0) {
-            MassSubsystem.massJaguar.set(.5);
-        } else if (RobotMap.stick1.getY() < 0) {
-            MassSubsystem.massJaguar.set(-.5);
+        if (oi.stick1.getY() > 0) {
+            massSubsystem.massVictor.set(.1);
+        } else if (oi.stick1.getY() < 0) {
+            massSubsystem.massVictor.set(-.1);
         }
 
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        if (RobotMap.stick1.getY() == 0) {
+        if (oi.stick2.getY() == 0) 
             return true;
-        } else {
-            return false;
+        else
+           return false;
         }
-    }
 
-    // Called once after isFinished returns true
+        // Called once after isFinished returns true
+    
+
     protected void end() {
-        MassSubsystem.massJaguar.set(0);
+        massSubsystem.massVictor.set(0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-        MassSubsystem.massJaguar.set(0);
+        massSubsystem.massVictor.set(0);
     }
 }

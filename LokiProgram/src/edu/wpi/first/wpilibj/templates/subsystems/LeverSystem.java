@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.networktables.NetworkListener;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
+import  edu.wpi.first.wpilibj.buttons.Button;
 
 /**
  *
@@ -14,7 +15,9 @@ public class LeverSystem extends Subsystem {
     // here. Call these from Commands.
 
     public Jaguar leverJaguar;
-
+    public Button down;
+    public Button up;
+    
     public LeverSystem() {
         //leverJaguar = new Jaguar(1);
     }

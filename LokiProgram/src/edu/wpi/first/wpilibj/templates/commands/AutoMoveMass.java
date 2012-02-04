@@ -11,8 +11,8 @@ package edu.wpi.first.wpilibj.templates.commands;
 public class AutoMoveMass extends CommandBase {
     
     public AutoMoveMass() {
-        requires(GyroSubsystem);
-        requires(MassSubsystem);
+        requires(gyroSubsystem);
+        requires(massSubsystem);
     }
 
     // Called just before this Command runs the first time

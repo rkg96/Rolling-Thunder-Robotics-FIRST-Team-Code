@@ -96,30 +96,30 @@ public class DriveCommand extends CommandBase {
         driveSubsystem.angle[3] = MathUtils.atan2(A, C) * 180 / Math.PI;
 
         //normalize the speed...
-        double max = DriveSubsystem.magnitude[0];
-        if (DriveSubsystem.magnitude[1] > max) {
-            max = DriveSubsystem.magnitude[1];
+        double max = driveSubsystem.magnitude[0];
+        if (driveSubsystem.magnitude[1] > max) {
+            max = driveSubsystem.magnitude[1];
         }
-        if (DriveSubsystem.magnitude[2] > max) {
-            max = DriveSubsystem.magnitude[2];
+        if (driveSubsystem.magnitude[2] > max) {
+            max = driveSubsystem.magnitude[2];
         }
-        if (DriveSubsystem.magnitude[3] > max) {
-            max = DriveSubsystem.magnitude[3];
+        if (driveSubsystem.magnitude[3] > max) {
+            max = driveSubsystem.magnitude[3];
         }
         if (max > 1) {
-            DriveSubsystem.magnitude[0] /= max;
-            DriveSubsystem.magnitude[1] /= max;
-            DriveSubsystem.magnitude[2] /= max;
-            DriveSubsystem.magnitude[3] /= max;
+            driveSubsystem.magnitude[0] /= max;
+            driveSubsystem.magnitude[1] /= max;
+            driveSubsystem.magnitude[2] /= max;
+            driveSubsystem.magnitude[3] /= max;
         }
         adjustSpeedAndAngle();
 
         //saving angles...
         for (int i = 0; i <= 3; i++) {
-            DriveSubsystem.lastAngle[i] = DriveSubsystem.lastAngle[i] + DriveSubsystem.angle[i];
+            driveSubsystem.lastAngle[i] = driveSubsystem.lastAngle[i] + driveSubsystem.angle[i];
         }
         //set motors speed for each wheel...
-        DriveSubsystem.setWheel();
+        driveSubsystem.setWheel();
 
     }
     //reverse speed rather than turn >180
@@ -139,7 +139,7 @@ public class DriveCommand extends CommandBase {
 
     protected void resetAngle() {
         for (int i = 0; i <= 3; i++) {
-            DriveSubsystem.lastAngle[i] = 0.0;
+            driveSubsystem.lastAngle[i] = 0.0;
         }
 
     }
