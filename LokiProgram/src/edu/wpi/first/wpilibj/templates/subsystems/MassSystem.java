@@ -13,7 +13,7 @@ public class MassSystem extends Subsystem {
     public Jaguar massJaguar;
 
     public MassSystem() {
-        massJaguar = new Jaguar(1);
+        //massJaguar = new Jaguar(1);
     }
 
     public void initDefaultCommand() {

@@ -4,19 +4,36 @@
  */
 package edu.wpi.first.wpilibj.templates;
 
-import edu.wpi.first.wpilibj.Jaguar;
+//import edu.wpi.first.wpilibj.Jaguar;
+import edu.wpi.first.wpilibj.CANJaguar;
+import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.can.CANTimeoutException;
+
 
 /**
  *
- * @author Clay
+ * @author Giang
  */
 public class Wheel {
 
-    public Jaguar turnJaguar;
-    public Jaguar driveJaguar;
+    private CANJaguar turnJaguar;
+    //public Jaguar driveJaguar;
+    private Victor driveVictor;
 
-    public Wheel(int turnchannel, int drivechannel) {
-        turnJaguar = new Jaguar(turnchannel);
-        driveJaguar = new Jaguar(drivechannel);
+    public Wheel(int turnchannel, int drivechannel){
+        try {
+            turnJaguar = new CANJaguar(turnchannel,CANJaguar.ControlMode.kPercentVbus);
+            turnJaguar.enableControl();
+            driveVictor = new Victor(drivechannel);
+        } catch (CANTimeoutException ex) {
+        }
+    }
+    public void setWheel(double turnRate, double driveRate){
+        try {
+            turnJaguar.setX(turnRate);
+        } catch (CANTimeoutException ex) {
+        }
+        driveVictor.set(driveRate);
+        
     }
 }
