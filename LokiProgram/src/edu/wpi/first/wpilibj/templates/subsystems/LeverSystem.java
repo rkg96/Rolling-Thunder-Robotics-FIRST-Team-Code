@@ -16,11 +16,11 @@ public class LeverSystem extends Subsystem {
     public Jaguar leverJaguar;
 
     public LeverSystem() {
-        leverJaguar = new Jaguar(1);
+        //leverJaguar = new Jaguar(1);
     }
     private NetworkTable table;
 
-    public NetworkTable getTable() {
+/*    public NetworkTable getTable() {
         if (table == null) {
             table = super.getTable();
             table.putInt("PWM", (int) leverJaguar.get());
@@ -44,7 +44,7 @@ public class LeverSystem extends Subsystem {
             }.start();
         }
         return table;
-    }
+    }*/
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here. Sends current lever angle to smartdashboard?

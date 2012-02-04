@@ -7,8 +7,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 public class MainAutoCommand extends CommandBase {
 
     public MainAutoCommand() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+        requires(GyroSubsystem);
     }
 
     // Called just before this Command runs the first time

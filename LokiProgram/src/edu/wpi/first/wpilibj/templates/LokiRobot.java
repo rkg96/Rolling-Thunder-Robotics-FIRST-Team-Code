@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.templates.commands.CommandBase;
 import edu.wpi.first.wpilibj.templates.commands.MainAutoCommand;
 import edu.wpi.first.wpilibj.templates.commands.MainTeleopCommand;
+import edu.wpi.first.wpilibj.templates.commands.DriveCommand;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -25,7 +26,7 @@ import edu.wpi.first.wpilibj.templates.commands.MainTeleopCommand;
 public class LokiRobot extends IterativeRobot {
 
     Command autonomousCommand;
-    Command teleopCommand;
+    DriveCommand driveCommand;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -34,7 +35,7 @@ public class LokiRobot extends IterativeRobot {
     public void robotInit() {
         // instantiate the command used for the autonomous period
         autonomousCommand = new MainAutoCommand();
-        teleopCommand = new MainTeleopCommand();
+        driveCommand  = new DriveCommand();
         // Initialize all subsystems
         CommandBase.init();
     }
@@ -57,7 +58,7 @@ public class LokiRobot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         autonomousCommand.cancel();
-        teleopCommand.start();
+        driveCommand.start();
         
     }
 

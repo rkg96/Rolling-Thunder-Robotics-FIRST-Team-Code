@@ -14,7 +14,7 @@ public class GyroSystem extends Subsystem {
     //public SendableGyro ySendableGyro;
 
     public GyroSystem() {
-        SendableGyro = new SendableGyro(1);
+        //SendableGyro = new SendableGyro(1);
         // ySendableGyro = new SendableGyro(1);
     }
 
