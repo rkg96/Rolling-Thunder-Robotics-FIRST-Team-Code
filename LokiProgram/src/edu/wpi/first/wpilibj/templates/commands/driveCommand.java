@@ -13,7 +13,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 //import edu.wpi.first.wpilibj.can.CANTimeoutException;
 //import edu.wpi.first.wpilibj.Gyro;
 import com.sun.squawk.util.MathUtils;
-import edu.wpi.first.wpilibj.templates.RobotMap;
+//import edu.wpi.first.wpilibj.templates.OI;
 
 /**
  *
@@ -46,7 +46,7 @@ public class DriveCommand extends CommandBase {
 
     public DriveCommand() {
         // Use requires() here to declare subsystem dependencies
-        requires(DriveSubsystem);
+        requires(driveSubsystem);
     }
 
     // Called just before this Command runs the first time
@@ -55,7 +55,7 @@ public class DriveCommand extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        swerveWithRotation(RobotMap.stick1.getX(), RobotMap.stick1.getY(), RobotMap.stick1.getTwist());
+        swerveWithRotation(oi.stick1.getX(), oi.stick1.getY(), oi.stick1.getTwist());
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -74,10 +74,10 @@ public class DriveCommand extends CommandBase {
 
     protected void swerveWithRotation(double STR, double FWD, double RCW) {
         //convert to field-centric...
-        double temp = FWD * Math.cos(GyroSubsystem.getAngle()) + STR * Math.sin(GyroSubsystem.getAngle());
-        STR = -FWD * Math.sin(GyroSubsystem.getAngle()) + STR * Math.cos(GyroSubsystem.getAngle());
+        double temp = FWD * Math.cos(gyroSubsystem.getAngle()) + STR * Math.sin(gyroSubsystem.getAngle());
+        STR = -FWD * Math.sin(gyroSubsystem.getAngle()) + STR * Math.cos(gyroSubsystem.getAngle());
         FWD = temp;
-        GyroSubsystem.updateAngle(RCW);
+        gyroSubsystem.updateAngle(RCW);
         //Vector components...
         double A = STR - RCW * (L / R);
         double B = STR + RCW * (L / R);
@@ -85,15 +85,15 @@ public class DriveCommand extends CommandBase {
         double D = FWD + RCW * (W / R);
 
         //temp speed for each wheel
-        DriveSubsystem.magnitude[0] = Math.sqrt(MathUtils.pow(B, 2.0) + MathUtils.pow(C, 2.0));
-        DriveSubsystem.magnitude[1] = Math.sqrt(MathUtils.pow(B, 2.0) + MathUtils.pow(D, 2.0));
-        DriveSubsystem.magnitude[2] = Math.sqrt(MathUtils.pow(A, 2.0) + MathUtils.pow(D, 2.0));
-        DriveSubsystem.magnitude[3] = Math.sqrt(MathUtils.pow(A, 2.0) + MathUtils.pow(C, 2.0));
+        driveSubsystem.magnitude[0] = Math.sqrt(MathUtils.pow(B, 2.0) + MathUtils.pow(C, 2.0));
+        driveSubsystem.magnitude[1] = Math.sqrt(MathUtils.pow(B, 2.0) + MathUtils.pow(D, 2.0));
+        driveSubsystem.magnitude[2] = Math.sqrt(MathUtils.pow(A, 2.0) + MathUtils.pow(D, 2.0));
+        driveSubsystem.magnitude[3] = Math.sqrt(MathUtils.pow(A, 2.0) + MathUtils.pow(C, 2.0));
         // temp angle for each wheel
-        DriveSubsystem.angle[0] = MathUtils.atan2(B, C) * 180 / Math.PI;
-        DriveSubsystem.angle[1] = MathUtils.atan2(B, D) * 180 / Math.PI;
-        DriveSubsystem.angle[2] = MathUtils.atan2(A, D) * 180 / Math.PI;
-        DriveSubsystem.angle[3] = MathUtils.atan2(A, C) * 180 / Math.PI;
+        driveSubsystem.angle[0] = MathUtils.atan2(B, C) * 180 / Math.PI;
+        driveSubsystem.angle[1] = MathUtils.atan2(B, D) * 180 / Math.PI;
+        driveSubsystem.angle[2] = MathUtils.atan2(A, D) * 180 / Math.PI;
+        driveSubsystem.angle[3] = MathUtils.atan2(A, C) * 180 / Math.PI;
 
         //normalize the speed...
         double max = DriveSubsystem.magnitude[0];
@@ -127,11 +127,11 @@ public class DriveCommand extends CommandBase {
 
     protected void adjustSpeedAndAngle() {
         for (int i = 0; i <= 3; i++) {
-            DriveSubsystem.magnitude[i] = DriveSubsystem.magnitude[i] * MathUtils.pow(-1, (int) (DriveSubsystem.angle[i] / 180.0));
-            DriveSubsystem.angle[i] = (DriveSubsystem.angle[i] % 180.0);
-            if (DriveSubsystem.angle[i] + DriveSubsystem.lastAngle[i] > 180) {
-                DriveSubsystem.angle[i] = DriveSubsystem.angle[i] - 180.0;
-                DriveSubsystem.magnitude[i] *= -1;
+            driveSubsystem.magnitude[i] = driveSubsystem.magnitude[i] * MathUtils.pow(-1, (int) (driveSubsystem.angle[i] / 180.0));
+            driveSubsystem.angle[i] = (driveSubsystem.angle[i] % 180.0);
+            if (driveSubsystem.angle[i] + driveSubsystem.lastAngle[i] > 180) {
+                driveSubsystem.angle[i] = driveSubsystem.angle[i] - 180.0;
+                driveSubsystem.magnitude[i] *= -1;
             }
         }
 
