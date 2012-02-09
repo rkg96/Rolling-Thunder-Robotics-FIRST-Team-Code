@@ -19,7 +19,7 @@ import com.sun.squawk.util.MathUtils;
  *
  * @author Giang
  */
-public class DriveCommand extends CommandBase {
+public class DriverCommand extends CommandBase {
     //joystick and it's values...
 
     //rotation motor controller.
@@ -44,7 +44,7 @@ public class DriveCommand extends CommandBase {
     double W = 14.0;
     double R = Math.sqrt(MathUtils.pow(L, 2.0) + MathUtils.pow(W, 2.0));
 
-    public DriveCommand() {
+    public DriverCommand() {
         // Use requires() here to declare subsystem dependencies
         requires(driveSubsystem);
     }
