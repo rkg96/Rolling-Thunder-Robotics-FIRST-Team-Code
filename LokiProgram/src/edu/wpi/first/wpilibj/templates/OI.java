@@ -1,8 +1,10 @@
 
 package edu.wpi.first.wpilibj.templates;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.DigitalIOButton;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -40,5 +42,10 @@ public class OI {
     // Start the command when the button is released  and let it run the command
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
+    
+    public static final Joystick stick1 = new Joystick(1);//joy stick for drivetrain
+    public static final Joystick stick2 = new Joystick(1);//joy stick for drivetrain
+    public static final Button upMass = new JoystickButton (stick2, 1);
+    public static final Button downMass = new JoystickButton (stick2, 2);
 }
 

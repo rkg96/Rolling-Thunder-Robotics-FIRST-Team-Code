@@ -20,10 +20,10 @@ public abstract class CommandBase extends Command {
 
     public static OI oi;
     // Create a single static instance of all of your subsystems
-    public static MassSystem MassSubsystem = new MassSystem();
-    public static LeverSystem LeverSubsystem = new LeverSystem();
-    public static GyroSystem GyroSubsystem = new GyroSystem();
-    public static DriveSystem DriveSubsystem = new DriveSystem();
+    public static MassSystem massSubsystem = new MassSystem();
+    public static LeverSystem leverSubsystem = new LeverSystem();
+    public static GyroSystem gyroSubsystem = new GyroSystem();
+    public static DriveSystem driveSubsystem = new DriveSystem();
 
     public static void init() {
         // This MUST be here. If the OI creates Commands (which it very likely
@@ -34,10 +34,10 @@ public abstract class CommandBase extends Command {
         oi = new OI();
 
         // Show what command your subsystem is running on the SmartDashboard
-        SmartDashboard.putData(MassSubsystem);
-        SmartDashboard.putData(LeverSubsystem);
-        SmartDashboard.putData(GyroSubsystem);
-        SmartDashboard.putData(DriveSubsystem);
+        SmartDashboard.putData(massSubsystem);
+        SmartDashboard.putData(leverSubsystem);
+        SmartDashboard.putData(gyroSubsystem);
+        SmartDashboard.putData(driveSubsystem);
     }
 
     public CommandBase(String name) {

@@ -30,5 +30,4 @@ public class RobotMap {
     public static final int frontleftWheelTurn=2;
     public static final int backleftWheelTurn=5;
     public static final int backrightWheelTurn=4;
-    public static final Joystick stick1 = new Joystick(1);//joy stick for drivetrain
 }
