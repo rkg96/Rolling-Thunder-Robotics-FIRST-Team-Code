@@ -1,7 +1,7 @@
 package edu.wpi.first.wpilibj.templates;
 import edu.wpi.first.wpilibj.Joystick;
-
-
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.Joystick.ButtonType;
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -31,4 +31,12 @@ public class RobotMap {
     public static final int backleftWheelTurn=5;
     public static final int backrightWheelTurn=4;
     public static final Joystick stick1 = new Joystick(1);//joy stick for drivetrain
+    
+    //Button 4 movable mass...
+   // public static final Button buttonMass= stick1.getButton();
+    //Victors slots #...movable mass
+    public static final int massVictor=20;
+    
+    //Accelerometers chanel #...movable mass
+    public static final int accChanel=30;
 }
