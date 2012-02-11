@@ -24,10 +24,10 @@ public class MoveLever extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if (OI.upMass.get()) {
-            massSubsystem.massVictor.set(.1);
-        } else if (OI.downMass.get()) {
-            massSubsystem.massVictor.set(-.1);
+        if (oi.getUpLever().get()) {
+            leverSubsystem.leverVictor.set(.1);
+        } else if (oi.getDownLever().get()) {
+           leverSubsystem.leverVictor.set(-.1);
         }
 
     }
@@ -40,12 +40,12 @@ public class MoveLever extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
-        leverSubsystem.leverJaguar.set(0);
+        leverSubsystem.leverVictor.set(0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
-        leverSubsystem.leverJaguar.set(0);
+        leverSubsystem.leverVictor.set(0);
     }
 }

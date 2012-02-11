@@ -13,7 +13,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 //import edu.wpi.first.wpilibj.can.CANTimeoutException;
 //import edu.wpi.first.wpilibj.Gyro;
 import com.sun.squawk.util.MathUtils;
-//import edu.wpi.first.wpilibj.templates.OI;
+import edu.wpi.first.wpilibj.templates.OI;
 
 /**
  *
@@ -55,7 +55,7 @@ public class DriverCommand extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        swerveWithRotation(oi.stick1.getX(), oi.stick1.getY(), oi.stick1.getTwist());
+        swerveWithRotation(oi.getJoystick1().getX(), oi.getJoystick1().getY(), oi.getJoystick1().getTwist());
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -129,7 +129,7 @@ public class DriverCommand extends CommandBase {
         for (int i = 0; i <= 3; i++) {
             driveSubsystem.magnitude[i] = driveSubsystem.magnitude[i] * MathUtils.pow(-1, (int) (driveSubsystem.angle[i] / 180.0));
             driveSubsystem.angle[i] = (driveSubsystem.angle[i] % 180.0);
-            if (driveSubsystem.angle[i] + driveSubsystem.lastAngle[i] > 180) {
+            if (Math.abs(driveSubsystem.angle[i] + driveSubsystem.lastAngle[i]) > 180) {
                 driveSubsystem.angle[i] = driveSubsystem.angle[i] - 180.0;
                 driveSubsystem.magnitude[i] *= -1;
             }
