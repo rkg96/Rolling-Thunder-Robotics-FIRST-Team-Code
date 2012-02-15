@@ -28,7 +28,7 @@ public class DriveSystem extends Subsystem {
         frontrightWheel = new Wheel(RobotMap.frontrightWheelTurn, RobotMap.frontrightWheelDrive);
         frontleftWheel = new Wheel(RobotMap.frontleftWheelTurn, RobotMap.frontleftWheelDrive);
         backleftWheel = new Wheel(RobotMap.backleftWheelTurn, RobotMap.backleftWheelDrive);
-        backrightWheel = new Wheel(RobotMap.backleftWheelTurn, RobotMap.backrightWheelDrive);
+        backrightWheel = new Wheel(RobotMap.backrightWheelTurn, RobotMap.backrightWheelDrive);
         for (int i = 0; i <= 3; i++) {
             lastAngle[i] = 0;
         }
