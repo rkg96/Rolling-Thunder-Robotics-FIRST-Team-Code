@@ -6,7 +6,6 @@ package edu.wpi.first.wpilibj.templates;
 
 //import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.CANJaguar;
-import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.can.CANTimeoutException;
 
@@ -17,20 +16,23 @@ import edu.wpi.first.wpilibj.can.CANTimeoutException;
  */
 public class Wheel {
 
-    private Jaguar turnJaguar;
+    private CANJaguar turnJaguar;
     //public Jaguar driveJaguar;
     private Victor driveVictor;
 
     public Wheel(int turnchannel, int drivechannel){
-        
-            turnJaguar = new Jaguar(turnchannel);//CANJaguar.ControlMode.kPercentVbus
-            driveVictor = new Victor(drivechannel);        
-        
-        
+        try {
+            turnJaguar = new CANJaguar(turnchannel,CANJaguar.ControlMode.kPercentVbus);
+            turnJaguar.enableControl();
+            driveVictor = new Victor(drivechannel);
+        } catch (CANTimeoutException ex) {
+        }
     }
     public void setWheel(double turnRate, double driveRate){
-            turnJaguar.set(turnRate);
-        
+        try {
+            turnJaguar.setX(turnRate);
+        } catch (CANTimeoutException ex) {
+        }
         driveVictor.set(driveRate);
         
     }

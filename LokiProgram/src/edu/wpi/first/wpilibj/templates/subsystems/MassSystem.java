@@ -17,8 +17,8 @@ public class MassSystem extends Subsystem {
    
     public MassSystem() {
 
-//        massVictor = new Victor(RobotMap.massVictor);
-  //      accelerometer=new Accelerometer(RobotMap.accChanel);
+        massVictor = new Victor(RobotMap.massVictor);
+        accelerometer=new Accelerometer(RobotMap.accChanel);
     }
 
     public synchronized void moveMass(double n) {

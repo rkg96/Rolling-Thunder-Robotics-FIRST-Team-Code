@@ -20,22 +20,22 @@ public class RobotMap {
     // public static final int rangefinderModule = 1;
    
     //Victors slots #...drive
-    public static final int frontrightWheelDrive=1;
-    public static final int frontleftWheelDrive=2;
-    public static final int backleftWheelDrive=3;
-    public static final int backrightWheelDrive=4;
+    public static final int frontrightWheelDrive=2;
+    public static final int frontleftWheelDrive=1;
+    public static final int backleftWheelDrive=4;
+    public static final int backrightWheelDrive=3;
     
     //Canjaguar slots #...drive
-    public static final int frontrightWheelTurn=5;
-    public static final int frontleftWheelTurn=6;
-    public static final int backleftWheelTurn=7;
-    public static final int backrightWheelTurn=8;
+    public static final int frontrightWheelTurn=3;
+    public static final int frontleftWheelTurn=2;
+    public static final int backleftWheelTurn=5;
+    public static final int backrightWheelTurn=4;
     
     //Button 4 movable mass...
    // public static final Button buttonMass= stick1.getButton();
     //Victors slots #...movable mass
-  //  public static final int massVictor=20;
+    public static final int massVictor=20;
     
     //Accelerometers chanel #...movable mass
-   // public static final int accChanel=30;
+    public static final int accChanel=30;
 }

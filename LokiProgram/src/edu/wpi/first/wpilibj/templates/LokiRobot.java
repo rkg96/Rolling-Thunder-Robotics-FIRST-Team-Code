@@ -25,8 +25,8 @@ import edu.wpi.first.wpilibj.templates.commands.DriverCommand;
  */
 public class LokiRobot extends IterativeRobot {
 
-      Command autonomousCommand;
-      DriverCommand driveCommand;
+    Command autonomousCommand;
+    DriverCommand driveCommand;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -34,15 +34,15 @@ public class LokiRobot extends IterativeRobot {
      */
     public void robotInit() {
         // instantiate the command used for the autonomous period
-           autonomousCommand = new MainAutoCommand();
-           driveCommand  = new DriverCommand();
+        autonomousCommand = new MainAutoCommand();
+        driveCommand  = new DriverCommand();
         // Initialize all subsystems
         CommandBase.init();
     }
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
-          autonomousCommand.start();
+        autonomousCommand.start();
     }
 
     /**
@@ -57,9 +57,8 @@ public class LokiRobot extends IterativeRobot {
         // teleop starts running. If you want the autonomous to 
         // continue until interrupted by another command, remove
         // this line or comment it out.
-          autonomousCommand.cancel();
-          driveCommand.start();
-        int x=3;
+        autonomousCommand.cancel();
+        driveCommand.start();
         
     }
 
