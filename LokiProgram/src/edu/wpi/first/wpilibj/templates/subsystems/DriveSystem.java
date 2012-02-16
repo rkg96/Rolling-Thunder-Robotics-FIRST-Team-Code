@@ -44,6 +44,16 @@ public class DriveSystem extends Subsystem {
         backleftWheel.setWheel(angle[2], magnitude[2]);
         backrightWheel.setWheel(angle[3], magnitude[3]);
     }
+    public double getAngle(int wheel)
+    {return angle[wheel];}
+    public double getMagnitude(int wheel)
+    {return magnitude[wheel];}
+    public void setAngle(int wheel, double num)
+    { angle[wheel]=num;
+    }
+    public void setMagnitude(int wheel,double num)
+    {magnitude[wheel]=num;
+    }
 
     public NetworkTable getTable() {
         // make a table
