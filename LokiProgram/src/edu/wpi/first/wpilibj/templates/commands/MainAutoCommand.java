@@ -15,7 +15,11 @@ public class MainAutoCommand extends CommandBase {
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
+    protected void execute() {              
+        
+        
+        
+        //All of autonomus
     }
 
     // Make this return true when this Command no longer needs to run execute()
