@@ -24,7 +24,7 @@ public class MoveMass extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
      
-      massSubsystem.moveMass(getMassSpeed(massSubsystem.accelerometer.getAcceleration()));
+      massSubsystem.moveMass(getMassSpeed(massSubsystem.getAccel().getAcceleration()));
     }
 
     protected double getMassSpeed(double acc){
