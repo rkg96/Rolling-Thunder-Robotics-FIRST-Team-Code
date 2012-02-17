@@ -12,10 +12,13 @@ public class LeverSystem extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
-    public Victor leverVictor;
-    public Button down;
-    public Button up;
+    private Victor leverVictor;
     public NetworkTable table;
+    
+    public void setLeverSpeed(double x)
+    {
+        leverVictor.set(x);
+    }
 
     public NetworkTable getTable() {
         if (table == null) {

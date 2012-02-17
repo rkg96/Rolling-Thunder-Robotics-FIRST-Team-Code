@@ -8,10 +8,9 @@ package edu.wpi.first.wpilibj.templates.commands;
  *
  * @author Robert Truong
  */
-public class AutoMoveMass extends CommandBase {
+public class ManualMass extends CommandBase {
     
-    public AutoMoveMass() {
-        requires(gyroSubsystem);
+    public ManualMass() {
         requires(massSubsystem);
     }
 
@@ -21,10 +20,16 @@ public class AutoMoveMass extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        if(oi.getUpMass().get() && !oi.getDownMass().get())
+            massSubsystem.setManualSpeed(.1);
+        else if (oi.getDownMass().get() && !oi.getUpMass().get())
+            massSubsystem.setManualSpeed(-.1);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
+        if ((oi.getUpMass().get() && oi.getDownMass().get()) || (!oi.getUpMass().get() && !oi.getDownMass().get()))
+            return true;
         return false;
     }
 

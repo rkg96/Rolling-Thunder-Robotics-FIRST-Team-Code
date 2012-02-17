@@ -27,11 +27,11 @@ public class LokiRobot extends IterativeRobot {
 
     Command autonomousCommand;
     DriverCommand driveCommand;
-    AxisCamera axisCamera;
-    private static final int COLOR = 50;
-    private static final int COMPRESSION = 50;
-    private static final int BRIGHTNESS = 50;
-    private static final int FPS = 1;
+    //AxisCamera axisCamera;
+    //private static final int COLOR = 50;
+    //private static final int COMPRESSION = 50;
+    //private static final int BRIGHTNESS = 50;
+    //private static final int FPS = 1;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -63,11 +63,11 @@ public class LokiRobot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         autonomousCommand.cancel();
-        axisCamera = AxisCamera.getInstance();
-        axisCamera.writeBrightness(BRIGHTNESS);
-        axisCamera.writeColorLevel(COLOR);
-        axisCamera.writeCompression(COMPRESSION);
-        axisCamera.writeMaxFPS(FPS);
+        //axisCamera = AxisCamera.getInstance();
+        //axisCamera.writeBrightness(BRIGHTNESS);
+        //axisCamera.writeColorLevel(COLOR);
+        //axisCamera.writeCompression(COMPRESSION);
+        //axisCamera.writeMaxFPS(FPS);
         driveCommand.start();
     }
 

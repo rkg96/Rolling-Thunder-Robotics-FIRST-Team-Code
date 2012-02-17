@@ -4,7 +4,7 @@
  */
 package edu.wpi.first.wpilibj.templates;
 
-//import edu.wpi.first.wpilibj.Jaguar;
+import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.can.CANTimeoutException;
@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboardData;
  *
  * @author Giang
  */
-public class Wheel implements SmartDashboardData {
+public class Wheel /*implements SmartDashboardData*/ {
 
     private CANJaguar turnJaguar;
     //public Jaguar driveJaguar;
@@ -24,23 +24,21 @@ public class Wheel implements SmartDashboardData {
 
     public Wheel(int turnchannel, int drivechannel) {
         try {
-            turnJaguar = new CANJaguar(turnchannel, CANJaguar.ControlMode.kPercentVbus);
-            turnJaguar.enableControl();
+            turnJaguar = new CANJaguar(turnchannel);//, CANJaguar.ControlMode.kPercentVbus);
+        } catch (CANTimeoutException ex) {
+            ex.printStackTrace();
+        }
             driveVictor = new Victor(drivechannel);
-        } catch (CANTimeoutException ex) {
-        }
+        
     }
 
-    public void setWheel(double turnRate, double driveRate) {
-        try {
-            turnJaguar.setX(turnRate);
-        } catch (CANTimeoutException ex) {
-        }
+    public void setWheel(double turnRate, double driveRate) throws CANTimeoutException {
+        //btwn -1 and 1
+        turnJaguar.setX(turnRate);
         driveVictor.set(driveRate);
-
     }
 
-    public NetworkTable getTable() {
+  public NetworkTable getTable() {
         if (table == null) {
             table = new NetworkTable();
         }

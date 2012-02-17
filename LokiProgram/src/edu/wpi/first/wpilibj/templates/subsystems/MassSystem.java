@@ -14,9 +14,19 @@ public class MassSystem extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
-    public Victor massVictor = new Victor(RobotMap.massVictor);
-    public Accelerometer accelerometer = new Accelerometer(RobotMap.accChanel); // TODO : Aren't we using a gyro?
+    private Victor massVictor = new Victor(RobotMap.massVictor);
+    private Accelerometer accelerometer = new Accelerometer(RobotMap.accChanel); // TODO : Aren't we using a gyro?
     public NetworkTable table = new NetworkTable();
+    
+    public void setManualSpeed(double x)
+    {
+        massVictor.set(x);
+    }
+    
+    public Accelerometer getAccel()
+    {
+        return accelerometer;
+    }
 
     public void moveMass(double n) {
         massVictor.set(n);

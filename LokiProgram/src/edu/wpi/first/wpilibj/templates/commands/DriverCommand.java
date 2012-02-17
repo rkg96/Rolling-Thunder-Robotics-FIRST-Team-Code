@@ -13,6 +13,7 @@ package edu.wpi.first.wpilibj.templates.commands;
 //import edu.wpi.first.wpilibj.can.CANTimeoutException;
 //import edu.wpi.first.wpilibj.Gyro;
 import com.sun.squawk.util.MathUtils;
+import edu.wpi.first.wpilibj.can.CANTimeoutException;
 import edu.wpi.first.wpilibj.templates.OI;
 
 /**
@@ -55,7 +56,11 @@ public class DriverCommand extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        swerveWithRotation(oi.getJoystick1().getX(), oi.getJoystick1().getY(), oi.getJoystick1().getTwist());
+        try {
+            swerveWithRotation(oi.getJoystick1().getX(), oi.getJoystick1().getY(), oi.getJoystick1().getTwist());
+        } catch (CANTimeoutException ex) {
+            ex.printStackTrace();
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -72,7 +77,7 @@ public class DriverCommand extends CommandBase {
     protected void interrupted() {
     }
 
-    protected void swerveWithRotation(double STR, double FWD, double RCW) {
+    protected void swerveWithRotation(double STR, double FWD, double RCW) throws CANTimeoutException {
         //convert to field-centric...
         double temp = FWD * Math.cos(gyroSubsystem.getAngle()) + STR * Math.sin(gyroSubsystem.getAngle());
         STR = -FWD * Math.sin(gyroSubsystem.getAngle()) + STR * Math.cos(gyroSubsystem.getAngle());
@@ -116,7 +121,7 @@ public class DriverCommand extends CommandBase {
 
         //saving angles...
         for (int i = 0; i <= 3; i++) {
-            driveSubsystem.lastAngle[i] = driveSubsystem.lastAngle[i] + driveSubsystem.angle[i];
+            driveSubsystem.setLastAngle(i, driveSubsystem.getLastAngle(i) + driveSubsystem.getAngle(i));
         }
         //set motors speed for each wheel...
         driveSubsystem.setWheel();
@@ -125,21 +130,23 @@ public class DriverCommand extends CommandBase {
     //reverse speed rather than turn >180
     //Cannot turn more than 180 on map...
 
-    protected void adjustSpeedAndAngle() {
-        for (int i = 0; i <= 3; i++) {
+    protected void adjustSpeedAndAngle() 
+    {
+        for (int i = 0; i <= 3; i++) 
+        {
             driveSubsystem.setMagnitude(i , driveSubsystem.getMagnitude(i) * MathUtils.pow(-1, (int) (driveSubsystem.getAngle(i) / 180.0)));
             driveSubsystem.setAngle(i, (driveSubsystem.getAngle(i) % 180.0));
-            if (Math.abs(driveSubsystem.getAngle(i) + driveSubsystem.lastAngle[i]) > 180) {
+            if (Math.abs(driveSubsystem.getAngle(i) + driveSubsystem.getLastAngle(i)) > 180) 
+            {
                 driveSubsystem.setAngle(i,driveSubsystem.getAngle(i) - 180.0);
                 driveSubsystem.setMagnitude(i,driveSubsystem.getMagnitude(i) * -1);
             }
         }
-
     }
 
     protected void resetAngle() {
         for (int i = 0; i <= 3; i++) {
-            driveSubsystem.lastAngle[i] = 0.0;
+            driveSubsystem.setLastAngle(i, 0.);
         }
 
     }

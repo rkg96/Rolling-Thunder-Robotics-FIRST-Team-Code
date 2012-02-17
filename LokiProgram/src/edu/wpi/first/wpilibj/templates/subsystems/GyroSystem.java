@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableGyro;
  */
 public class GyroSystem extends Subsystem {
 
-    double gyroAngle = 0.0;
+    private double gyroAngle = 0.0;
     public SendableGyro sendableGyro;
     private NetworkTable table;
 

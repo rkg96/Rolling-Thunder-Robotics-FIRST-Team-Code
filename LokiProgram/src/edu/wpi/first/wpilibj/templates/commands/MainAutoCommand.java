@@ -8,6 +8,8 @@ public class MainAutoCommand extends CommandBase {
 
     public MainAutoCommand() {
         requires(gyroSubsystem);
+        requires(driveSubsystem);
+        requires(leverSubsystem);
     }
 
     // Called just before this Command runs the first time
