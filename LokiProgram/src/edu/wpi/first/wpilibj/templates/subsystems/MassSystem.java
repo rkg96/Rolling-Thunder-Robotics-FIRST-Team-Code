@@ -18,11 +18,6 @@ public class MassSystem extends Subsystem {
     private Accelerometer accelerometer = new Accelerometer(RobotMap.accChanel); // TODO : Aren't we using a gyro?
     public NetworkTable table = new NetworkTable();
     
-    public void setManualSpeed(double x)
-    {
-        massVictor.set(x);
-    }
-    
     public Accelerometer getAccel()
     {
         return accelerometer;
@@ -31,7 +26,7 @@ public class MassSystem extends Subsystem {
     public void moveMass(double n) {
         massVictor.set(n);
         try {
-            wait(250); // TODO: This will freeze the entire main thread!
+            // TODO: This will freeze the entire main thread!
         } catch (Exception exception) {
         LogFile log = LogFile.getInstance();
         log.logString(exception.toString());

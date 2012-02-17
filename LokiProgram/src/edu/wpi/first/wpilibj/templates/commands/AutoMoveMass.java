@@ -23,18 +23,18 @@ public class AutoMoveMass extends CommandBase {
     }
 
     // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-     
-      massSubsystem.moveMass(getMassSpeed(massSubsystem.accelerometer.getAcceleration()));
-    }
+    protected void execute() {   
+    while (oi.getAuto().get())
+      massSubsystem.moveMass(getMassSpeed(massSubsystem.getAccel().getAcceleration()));
+    }    
 
-    protected double getMassSpeed(double acc){
+    protected double getMassSpeed(double acc)
+    {
        return MathUtils.asin(acc/9.8)*(180/Math.PI)*-.25;
-        
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return oi.getAutoMoveMass().get();
+        return oi.getAuto().get();
     }
 
     // Called once after isFinished returns true

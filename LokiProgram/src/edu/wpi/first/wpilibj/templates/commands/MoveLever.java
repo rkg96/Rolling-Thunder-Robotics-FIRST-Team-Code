@@ -24,10 +24,12 @@ public class MoveLever extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if (oi.getJoystick2().getY() > 1.0 || oi.getJoystick2().getY() < -1.0)
-             leverSubsystem.leverVictor.set(oi.getJoystick2().getY()/oi.getJoystick2().getY());
+        if (oi.getJoystick2().getY() > 1.0)
+             leverSubsystem.setLeverSpeed(1);
+        else if (oi.getJoystick2().getY() < -1.0)
+             leverSubsystem.setLeverSpeed(-1);
         else
-             leverSubsystem.leverVictor.set(oi.getJoystick2().getY());
+             leverSubsystem.setLeverSpeed(oi.getJoystick2().getY());
     }
 
     //Make this return true when this Command no longer needs to run execute()

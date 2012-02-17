@@ -1,5 +1,5 @@
 package edu.wpi.first.wpilibj.templates.commands;
-
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 /**
  *
  * @author bradmiller
@@ -10,6 +10,7 @@ public class MainAutoCommand extends CommandBase {
         requires(gyroSubsystem);
         requires(driveSubsystem);
         requires(leverSubsystem);
+        requires(massSubsystem);
     }
 
     // Called just before this Command runs the first time
