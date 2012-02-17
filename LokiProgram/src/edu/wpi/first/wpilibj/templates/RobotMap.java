@@ -32,10 +32,13 @@ public class RobotMap {
     public static final int backrightWheelTurn=4;
     
     //Button 4 movable mass...
-   // public static final Button buttonMass= stick1.getButton();
-    //Victors slots #...movable mass
+   // public static final Button autoMoveMass = stick1.getButton();
+    //public static final Button
+    //Victors slots #...movable mass and lever
     public static final int massVictor=20;
+    public static final int leverVictor=21;
     
-    //Accelerometers chanel #...movable mass
+    //Accelerometers chanel #...auto movable mass
     public static final int accChanel=30;
+       
 }

@@ -50,8 +50,8 @@ public class OI {
     private Joystick stick1;//drive joystick
     private Joystick stick2;//lever joystick
     private Joystick stick3;//mass joystick
-    private JoystickButton upLever;
-    private JoystickButton downLever;
+
+    private JoystickButton autoMoveMass;
             
 
     public OI() {
@@ -70,13 +70,8 @@ public class OI {
         return stick3;
     }
     
-    public JoystickButton getUpLever() {
-        return upLever;
+    public JoystickButton getAutoMoveMass () {
+        return autoMoveMass;
     }
-    
-    public JoystickButton getDownLever() {
-        return downLever;
-    }
-    
 }
 

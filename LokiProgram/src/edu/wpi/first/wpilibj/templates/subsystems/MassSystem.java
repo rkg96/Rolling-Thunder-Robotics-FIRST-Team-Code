@@ -35,10 +35,6 @@ public class MassSystem extends Subsystem {
         return table;
     }
 
-    public void set(double speed) {
-        massJaguar.set(speed);
-    }
-
     public void initDefaultCommand() {
         // Set the default command for a subsystem here. Send Mass position?
         //setDefaultCommand(new MySpecialCommand());

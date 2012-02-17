@@ -3,18 +3,16 @@
  * and open the template in the editor.
  */
 package edu.wpi.first.wpilibj.templates.commands;
-import com.sun.squawk.util.MathUtils;
 
 /**
  *
- * @author Giang
+ * @author Robert Truong
  */
 public class MoveMass extends CommandBase {
     
     public MoveMass() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-      requires(massSubsystem);
+        
+        requires(massSubsystem);
     }
 
     // Called just before this Command runs the first time
@@ -23,25 +21,27 @@ public class MoveMass extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-     
-      massSubsystem.moveMass(getMassSpeed(massSubsystem.accelerometer.getAcceleration()));
-    }
-
-    protected double getMassSpeed(double acc){
-       return MathUtils.asin(acc/9.8)*(180/Math.PI)*-.25;
+        if (oi.getJoystick3().getY() > 1.0 || oi.getJoystick3().getY() < -1.0)
+             massSubsystem.moveMass(oi.getJoystick3().getY()/oi.getJoystick3().getY());
+        else massSubsystem.moveMass(oi.getJoystick3().getY());
         
     }
+
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        if (oi.getJoystick3().getY() == 0)
+        return true;
+        else return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+        massSubsystem.moveMass(0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+        massSubsystem.moveMass(0);
     }
 }

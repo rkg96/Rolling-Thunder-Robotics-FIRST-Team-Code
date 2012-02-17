@@ -3,16 +3,19 @@
  * and open the template in the editor.
  */
 package edu.wpi.first.wpilibj.templates.commands;
+import com.sun.squawk.util.MathUtils;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
  *
- * @author Robert Truong
+ * @author Giang
  */
 public class AutoMoveMass extends CommandBase {
     
     public AutoMoveMass() {
-        requires(gyroSubsystem);
-        requires(massSubsystem);
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
+      requires(massSubsystem);
     }
 
     // Called just before this Command runs the first time
@@ -21,11 +24,17 @@ public class AutoMoveMass extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+     
+      massSubsystem.moveMass(getMassSpeed(massSubsystem.accelerometer.getAcceleration()));
     }
 
+    protected double getMassSpeed(double acc){
+       return MathUtils.asin(acc/9.8)*(180/Math.PI)*-.25;
+        
+    }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return oi.getAutoMoveMass().get();
     }
 
     // Called once after isFinished returns true

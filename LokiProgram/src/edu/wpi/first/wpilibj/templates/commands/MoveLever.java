@@ -24,18 +24,18 @@ public class MoveLever extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if (oi.getUpLever().get()) {
-            leverSubsystem.leverVictor.set(.1);
-        } else if (oi.getDownLever().get()) {
-           leverSubsystem.leverVictor.set(-.1);
-        }
-
+        if (oi.getJoystick2().getY() > 1.0 || oi.getJoystick2().getY() < -1.0)
+             leverSubsystem.leverVictor.set(oi.getJoystick2().getY()/oi.getJoystick2().getY());
+        else
+             leverSubsystem.leverVictor.set(oi.getJoystick2().getY());
     }
 
     //Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        //if (LeverSubsystem.get() == false)
-        return false;
+        if (oi.getJoystick2().getY() == 0)
+        return true;
+        else return false;
+             //if (LeverSubsystem.get() == false)
     }
 
     // Called once after isFinished returns true
