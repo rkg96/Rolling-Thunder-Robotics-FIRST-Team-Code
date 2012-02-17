@@ -1,5 +1,6 @@
 package edu.wpi.first.wpilibj.templates.subsystems;
 
+import edu.wpi.first.wpilibj.can.CANTimeoutException;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.templates.RobotMap;
@@ -15,13 +16,13 @@ import edu.wpi.first.wpilibj.templates.Wheel;
 
 public class DriveSystem extends Subsystem {
 
-    public Wheel frontleftWheel;
-    public Wheel frontrightWheel;
-    public Wheel backleftWheel;
-    public Wheel backrightWheel;
-    public double[] magnitude = new double[4];
-    public double[] angle = new double[4];
-    public double[] lastAngle = new double[4];//last current angle...
+    private Wheel frontleftWheel;
+    private Wheel frontrightWheel;
+    private Wheel backleftWheel;
+    private Wheel backrightWheel;
+    private double[] magnitude = new double[4];
+    private double[] angle = new double[4];
+    private double[] lastAngle = new double[4];//last current angle...
     // double lastfrDrive, lastflDrive, lastrlDrive,lastrrDrive;//last speed? need this??
     //represent the desired speed and direction of travel
     //[0]= frontLeft, [1]=frontright,[2]=Rearright,[3]=Rearleft
@@ -38,11 +39,40 @@ public class DriveSystem extends Subsystem {
         }
     }
 
-    public void setWheel() {
+    public void setWheel() throws CANTimeoutException {
         frontrightWheel.setWheel(angle[0], magnitude[0]);
         frontleftWheel.setWheel(angle[1], magnitude[1]);
         backleftWheel.setWheel(angle[2], magnitude[2]);
         backrightWheel.setWheel(angle[3], magnitude[3]);
+    }
+    
+    public double getAngle(int wheel)
+    {
+        return angle[wheel];
+    }
+    
+    public double getMagnitude(int wheel)
+    {
+        return magnitude[wheel];
+    }
+    
+    public double getLastAngle (int wheel)
+    {
+        return lastAngle[wheel];
+    }
+    
+    public void setLastAngle (int wheel, double num)
+    {
+          lastAngle[wheel] = num;
+    }
+    
+    public void setAngle(int wheel, double num)
+    { 
+        angle[wheel]=num;
+    }
+    public void setMagnitude(int wheel,double num)
+    {
+        magnitude[wheel]=num;
     }
 
     public NetworkTable getTable() {

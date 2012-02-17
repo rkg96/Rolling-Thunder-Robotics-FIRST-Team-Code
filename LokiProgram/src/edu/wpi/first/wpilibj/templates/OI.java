@@ -58,6 +58,8 @@ public class OI {
         stick1 = new Joystick (JOYSTICK_PORT1);
         stick2 = new Joystick (JOYSTICK_PORT2);
         stick3 = new Joystick (JOYSTICK_PORT3);
+        upMass = new JoystickButton(stick3, 1);
+        downMass = new JoystickButton (stick3, 2);
 }
     public Joystick getJoystick1() {
         return stick1;
