@@ -74,7 +74,6 @@ public class AutoCommand extends DriverCommand {
         try {
               swerveWithRotation(0, 1, 0); //moves forward, change values later
         } catch (CANTimeoutException ex) {
-            ex.printStackTrace();
         }
       }
         
@@ -94,7 +93,6 @@ public class AutoCommand extends DriverCommand {
          try {           
         swerveWithRotation(0, 0, 90); //turns 90 degrees to right???, fix value
        } catch (CANTimeoutException ex) {
-            ex.printStackTrace();
         }
     }
         //SECOND BRIDGE
@@ -103,7 +101,6 @@ public class AutoCommand extends DriverCommand {
          try {           
         swerveWithRotation(0, 1, 0); //moves robot forward
        } catch (CANTimeoutException ex) {
-            ex.printStackTrace();
         }
     }
        
@@ -112,7 +109,6 @@ public class AutoCommand extends DriverCommand {
          try {           
         swerveWithRotation(0, 0, -90); //turns 90 degrees to left???, fix value
        } catch (CANTimeoutException ex) {
-            ex.printStackTrace();
         }
     }
         
@@ -133,7 +129,6 @@ public class AutoCommand extends DriverCommand {
          try {           
         swerveWithRotation(0, 0, 90); //turns 90 degrees to right???, fix value
        } catch (CANTimeoutException ex) {
-            ex.printStackTrace();
         }
     }
         else if (counter10 < 15) { //lasts 5 seconds
@@ -141,7 +136,6 @@ public class AutoCommand extends DriverCommand {
          try {           
         swerveWithRotation(0, 1, 0); //moves robot forward
        } catch (CANTimeoutException ex) {
-            ex.printStackTrace();
         }
     }
        
@@ -150,7 +144,6 @@ public class AutoCommand extends DriverCommand {
          try {           
         swerveWithRotation(0, 0, -90); //turns 90 degrees to left???, fix value
        } catch (CANTimeoutException ex) {
-            ex.printStackTrace();
         }
        }
         

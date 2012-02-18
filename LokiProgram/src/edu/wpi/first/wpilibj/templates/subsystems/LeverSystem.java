@@ -32,6 +32,6 @@ public class LeverSystem extends Subsystem {
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here. Sends current lever angle to smartdashboard?
-        setDefaultCommand(new MoveLever());
+        //setDefaultCommand(new MoveLever());
     }
 }

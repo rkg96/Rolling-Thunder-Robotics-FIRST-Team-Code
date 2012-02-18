@@ -41,7 +41,7 @@ public class MoveLever extends CommandBase {
         return true;
         }
         else {
-            return false;
+        return false;
         }     //if (LeverSubsystem.get() == false)
     }
         

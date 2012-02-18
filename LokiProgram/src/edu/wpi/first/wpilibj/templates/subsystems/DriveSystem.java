@@ -90,6 +90,5 @@ public class DriveSystem extends Subsystem {
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here. Something that sends current motor speeds to the dashboard?
-        setDefaultCommand(new DriverCommand());
     }
 }

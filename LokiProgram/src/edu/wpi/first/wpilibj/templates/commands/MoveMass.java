@@ -38,7 +38,7 @@ public class MoveMass extends CommandBase {
         return true;
         }
         else { 
-            return false;
+        return false;
     }
     }
 

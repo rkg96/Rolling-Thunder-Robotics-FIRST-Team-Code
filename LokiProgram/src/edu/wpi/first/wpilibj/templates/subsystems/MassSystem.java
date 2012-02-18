@@ -43,6 +43,6 @@ public class MassSystem extends Subsystem {
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here. Send Mass position?
-        setDefaultCommand(new MoveMass());
+       // setDefaultCommand(new MoveMass());
     }
 }
