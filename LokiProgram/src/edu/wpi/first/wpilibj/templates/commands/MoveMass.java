@@ -21,21 +21,25 @@ public class MoveMass extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if (oi.getJoystick3().getY() > 1.0)
-            massSubsystem.moveMass(1.);
-        else if (oi.getJoystick3().getY() < -1.0)
+        if (oi.getJoystick3().getY() > 1.0) {
+            massSubsystem.moveMass(1.); 
+        }
+        else if (oi.getJoystick3().getY() < -1.0) {
             massSubsystem.moveMass(-1.);
-        else 
+        }
+        else { 
             massSubsystem.moveMass(oi.getJoystick3().getY());
-            
-         
+        }    
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        if (oi.getJoystick3().getY() == 0)
+        if (oi.getJoystick3().getY() == 0) {
         return true;
-        else return false;
+        }
+        else { 
+            return false;
+    }
     }
 
     // Called once after isFinished returns true

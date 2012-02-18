@@ -4,7 +4,7 @@
  */
 package edu.wpi.first.wpilibj.templates.commands;
 import com.sun.squawk.util.MathUtils;
-import edu.wpi.first.wpilibj.buttons.JoystickButton;
+
 
 /**
  *
@@ -24,9 +24,10 @@ public class AutoMoveMass extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {   
-    while (oi.getAuto().get())
+    while (oi.getAuto().get()) {
       massSubsystem.moveMass(getMassSpeed(massSubsystem.getAccel().getAcceleration()));
     }    
+    }
 
     protected double getMassSpeed(double acc)
     {
@@ -34,15 +35,22 @@ public class AutoMoveMass extends CommandBase {
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return oi.getAuto().get();
+        if (massSubsystem.getAccel().getAcceleration() == 0) {
+        return true;
+        }
+        else {
+        return false;
+        }
     }
-
+   
     // Called once after isFinished returns true
     protected void end() {
+        massSubsystem.moveMass(0);
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+        massSubsystem.moveMass(0); 
     }
 }

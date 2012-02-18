@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.templates.LogFile;
 import edu.wpi.first.wpilibj.templates.RobotMap;
+import edu.wpi.first.wpilibj.templates.commands.MoveMass;
 
 /**
  *
@@ -42,6 +43,6 @@ public class MassSystem extends Subsystem {
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here. Send Mass position?
-        //setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new MoveMass());
     }
 }

@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.DigitalIOButton;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.templates.commands.AutoMoveMass;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -51,13 +52,14 @@ public class OI {
     private Joystick stick2;//lever joystick
     private Joystick stick3;//mass joystick
 
-    private JoystickButton autoMoveMass;
+    private JoystickButton autoMoveMass = new JoystickButton(stick3, 1);
             
-
     public OI() {
         stick1 = new Joystick (JOYSTICK_PORT1);
         stick2 = new Joystick (JOYSTICK_PORT2);
         stick3 = new Joystick (JOYSTICK_PORT3);
+        
+        autoMoveMass.whenPressed(new AutoMoveMass()); //does this go here??
 }
     public Joystick getJoystick1() {
         return stick1;

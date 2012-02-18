@@ -14,7 +14,6 @@ package edu.wpi.first.wpilibj.templates.commands;
 //import edu.wpi.first.wpilibj.Gyro;
 import com.sun.squawk.util.MathUtils;
 import edu.wpi.first.wpilibj.can.CANTimeoutException;
-import edu.wpi.first.wpilibj.templates.OI;
 
 /**
  *
@@ -77,7 +76,7 @@ public class DriverCommand extends CommandBase {
     protected void interrupted() {
     }
 
-    protected void swerveWithRotation(double STR, double FWD, double RCW) throws CANTimeoutException {
+    public void swerveWithRotation(double STR, double FWD, double RCW) throws CANTimeoutException {
         //convert to field-centric...
         double temp = FWD * Math.cos(gyroSubsystem.getAngle()) + STR * Math.sin(gyroSubsystem.getAngle());
         STR = -FWD * Math.sin(gyroSubsystem.getAngle()) + STR * Math.cos(gyroSubsystem.getAngle());

@@ -35,8 +35,8 @@ public class RobotMap {
    // public static final Button autoMoveMass = stick1.getButton();
     //public static final Button
     //Victors slots #...movable mass and lever
-    public static final int massVictor=20;
-    public static final int leverVictor=21;
+    public static final int massVictor=5;
+    public static final int leverVictor=6;
     
     //Accelerometers chanel #...auto movable mass
     public static final int accChanel=30;

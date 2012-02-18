@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
 import edu.wpi.first.wpilibj.templates.RobotMap;
 import edu.wpi.first.wpilibj.templates.Wheel;
+import edu.wpi.first.wpilibj.templates.commands.DriverCommand;
 /*
  * The DriveSystem class represents the robot's physical drive system. Each
  * wheel is comprised of two motors
@@ -89,6 +90,6 @@ public class DriveSystem extends Subsystem {
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here. Something that sends current motor speeds to the dashboard?
-        //setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new DriverCommand());
     }
 }

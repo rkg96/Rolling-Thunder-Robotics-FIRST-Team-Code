@@ -24,22 +24,27 @@ public class MoveLever extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        if (oi.getJoystick2().getY() > 1.0)
+        if (oi.getJoystick2().getY() > 1.0) {
              leverSubsystem.setLeverSpeed(1);
-        else if (oi.getJoystick2().getY() < -1.0)
+        }
+        else if (oi.getJoystick2().getY() < -1.0) {
              leverSubsystem.setLeverSpeed(-1);
-        else
+        }
+        else {
              leverSubsystem.setLeverSpeed(oi.getJoystick2().getY());
+    }
     }
 
     //Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        if (oi.getJoystick2().getY() == 0)
+        if (oi.getJoystick2().getY() == 0) {
         return true;
-        else return false;
-             //if (LeverSubsystem.get() == false)
+        }
+        else {
+            return false;
+        }     //if (LeverSubsystem.get() == false)
     }
-
+        
     // Called once after isFinished returns true
     protected void end() {
         leverSubsystem.setLeverSpeed(0);

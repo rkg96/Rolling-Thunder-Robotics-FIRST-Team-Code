@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
+import edu.wpi.first.wpilibj.templates.commands.MoveLever;
 
 /**
  * TODO: Add movement commands, hook up buttons
@@ -31,6 +32,6 @@ public class LeverSystem extends Subsystem {
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here. Sends current lever angle to smartdashboard?
-        //setDefaultCommand(new MySpecialCommand());
+        setDefaultCommand(new MoveLever());
     }
 }
